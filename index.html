@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="scores"><a href="highscores.html">View Highscores</a> </div>
-    <div class="timer">Time: <span id="time">75 </span></div>
+    <div class="timer">Time remaining: <span id="time">75 </span></div>
 
     <div class = "wrapper">
         <div id="start-screen" class="start">
@@ -18,7 +18,7 @@
             <p>
                 Test your coding knowledge by answering the following questions within the time limit! Note that incorrect answers will penalize your score/time by ten seconds!
             </p>
-            <button id="start">Start Quiz</button>
+            <button id="start" onclick="startTimer()">Start Quiz</button>
         </div>
 
         <div id="questions" class="hide">
@@ -34,7 +34,8 @@
                 <button id="submit">Submit</button>
             </p>
         </div>
-        <div id="choice" class="choices"></div>
+        <!-- flashes right or wrong-->
+        <div id="feedback" class="feedback hide"></div>
     </div>
     <!-- js for the logic-->
     <script src="assets/js/script.js"></script>
