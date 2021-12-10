@@ -19,7 +19,7 @@ function startTimer () {
 
     startQuiz()
 };
-
+// found on stackoverflow - https://stackoverflow.com/questions/67496199/javascript-prevent-setinterval-function-from-running-until-button-is-clicked
 function tick() {
     if (timeleft < 0) {
         clearInterval(countdown);
