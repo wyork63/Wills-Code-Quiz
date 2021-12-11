@@ -1,7 +1,7 @@
 
 // timer function - need this to be triggered when the user clicks the start game button 
     // when the timer hits zero it will take me to the endscreen id="end-screen"
-var timeleft = 75;
+var timeleft = 60;
 var countdown;
 
 var questionsIndex = 0;
@@ -12,6 +12,10 @@ var questionTitle = document.getElementById("question-title");
 var choices = document.getElementById("choices");
 var submit = document.getElementById("submit");
 var feedback = document.getElementById("feedback");
+var initials = document.getElementById("initials");
+var score = document.getElementById("final-score");
+var timer = document.getElementById("clock");
+
 
 // function that starts time and quiz 
 function startTimer () {
@@ -30,6 +34,8 @@ function tick() {
     timeleft -= 1; // this is what time is subtracted from when wrong // timeleft minus ten 
 }
 
+// once the start button is clicked the first question is shown
+
 function startQuiz () {
     startScreen.setAttribute("class","hide")
 
@@ -37,7 +43,7 @@ function startQuiz () {
 
     cycleQuestions()
 }
-
+// function that cycle through each question 
 function cycleQuestions() {
     var displayQuestion = myQuestions[questionsIndex]
 
@@ -57,35 +63,50 @@ function cycleQuestions() {
 
 }
 // need to add ability to check if the questions are right or wrong 
+// when an answer is clicked 
+    // the page goes to the next set of questions 
+    // the bottom of the page displays either right or wrong 
 function checkAnswer () {
     if (this.value === myQuestions[questionsIndex].correctAnswer) {
         console.log("correct")
+        timeleft += 10;
     } else { 
         console.log("wrong")
         // penalize with minus 10 seconds 
         // do timeleft -10 and set the textcontent to what is displaying the time to time left 
-        // 
         timeleft -= 10;
         document.getElementById("time").innerHTML = timeleft;
     }
     questionsIndex++
-     
+    
+    // function that creates a score
+
+
     // if there are questions left in the array keep running cycle questions 
-    // if questionsindex = myquestions.length
-    // else end of array is reached fire quiz over function (tbd)
+    // if questionsindex > 6 then fireq quiz over function that will take users to end screen 
+    // when the question gets to the end it will also stop the tick with clear timeout 
+
+    if (questionsIndex > 5) {
+        endScreen.removeAttribute("class");
+        questions.setAttribute("class","hide");
+        timer.setAttribute("class","hide");
+        clearTimeout(countdown);
+        document.getElementById("final-score").innerHTML = timeleft;
+        return cycleQuestions; 
+    }
+
+
     cycleQuestions()
 }
 
 
 
 
-// once the start button is clicked the first question is shown 
-    // need some kind of hide unhide function here? 
-    // how to show questions from the questions javascript file to this one? 
 
-// when an answer is clicked 
-    // the page goes to the next set of questions 
-    // the bottom of the page displays either right or wrong 
+
+
+
+
 
 // if the answer is right it logs ten points to their score that is stored in the console log 
     // review the 4.4.6 module on how to store things in the console.log 

@@ -10,14 +10,15 @@
 </head>
 <body>
     <div class="scores"><a href="highscores.html">View Highscores</a> </div>
-    <div class="timer">Time remaining: <span id="time">75 </span></div>
+    <div class="timer" id="clock">Time remaining: <span id="time">60 </span></div>
 
     <div class = "wrapper">
         <div id="start-screen" class="start">
             <h1> Coding Quiz Challenge</h1>
-            <p>
-                Test your coding knowledge by answering the following questions within the time limit! Note that incorrect answers will penalize your score/time by ten seconds!
-            </p>
+            <h2>
+                Test your coding knowledge by answering the following questions!
+            </h2>
+            <p> If you get a question right it adds ten seconds to your score, get it wrong and it subtracts ten seconds. Try and get the highest time possible!</p>
             <button id="start" onclick="startTimer()">Start Quiz</button>
         </div>
 
@@ -28,7 +29,8 @@
 
         <div id="end-screen" class="hide">
             <h2>All Done!</h2>
-            <p>Your final score is <span id="final-score"></span>.</p>
+            <p>Your final score is: <span id="final-score"></span></p>
+            <p> Thanks for playing. Enter your initials to save your score.</p>
             <p>
                 Enter Initials: <input type="text" id="initials" max="3" />
                 <button id="submit">Submit</button>

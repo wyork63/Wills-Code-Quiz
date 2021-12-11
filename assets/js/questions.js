@@ -40,13 +40,5 @@ var myQuestions = [
         correctAnswer: "No"
 
     },
-
-    {
-        question: "Which event occers when the user clicks on an HTML element?",
-        answers: ["onmouseslick", "ontouch", "onclick" ],  
-        correctAnswer: "onclick"
-    },
-
-
     
 ]
