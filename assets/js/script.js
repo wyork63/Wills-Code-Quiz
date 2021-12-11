@@ -68,15 +68,17 @@ function cycleQuestions() {
     // the bottom of the page displays either right or wrong 
 function checkAnswer () {
     if (this.value === myQuestions[questionsIndex].correctAnswer) {
-        console.log("correct")
-        timeleft += 10;
+        console.log("correct") 
+        timeleft += 10; // adds ten seconds to time left 
+        document.getElementById("feedback").innerHTML = "Correct! 10 seconds added." // displays answer is right 
     } else { 
         console.log("wrong")
         // penalize with minus 10 seconds 
         // do timeleft -10 and set the textcontent to what is displaying the time to time left 
         timeleft -= 10;
         document.getElementById("time").innerHTML = timeleft;
-    }
+        document.getElementById("feedback").innerHTML = "Wrong! 10 seconds deducted." 
+        
     questionsIndex++
     
     // function that creates a score
@@ -100,7 +102,8 @@ function checkAnswer () {
 }
 
 
-
+//TO DO 
+    // add way to store initials with the score of that game
 
 
 
