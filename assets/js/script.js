@@ -15,10 +15,10 @@ var feedback = document.getElementById("feedback");
 var initials = document.getElementById("initials");
 var score = document.getElementById("final-score");
 var timer = document.getElementById("clock");
-
+var highscores;
 
 // function that starts time and quiz 
-function startTimer () {
+function startTimer() {
     countdown = setInterval(tick, 1000);
 
     startQuiz()
@@ -70,20 +70,20 @@ function checkAnswer () {
     if (this.value === myQuestions[questionsIndex].correctAnswer) {
         console.log("correct") 
         timeleft += 10; // adds ten seconds to time left 
-        document.getElementById("feedback").innerHTML = "Correct! 10 seconds added." // displays answer is right 
-    } else { 
+        document.getElementById("feedback").innerHTML = "Correct! 10 seconds added."; // displays answer is right 
+    } 
+    
+    else { 
         console.log("wrong")
         // penalize with minus 10 seconds 
         // do timeleft -10 and set the textcontent to what is displaying the time to time left 
         timeleft -= 10;
         document.getElementById("time").innerHTML = timeleft;
-        document.getElementById("feedback").innerHTML = "Wrong! 10 seconds deducted." 
-        
+        document.getElementById("feedback").innerHTML = "Wrong! 10 seconds deducted."; 
+    }
+
     questionsIndex++
     
-    // function that creates a score
-
-
     // if there are questions left in the array keep running cycle questions 
     // if questionsindex > 6 then fireq quiz over function that will take users to end screen 
     // when the question gets to the end it will also stop the tick with clear timeout 
@@ -91,15 +91,47 @@ function checkAnswer () {
     if (questionsIndex > 5) {
         endScreen.removeAttribute("class");
         questions.setAttribute("class","hide");
-        timer.setAttribute("class","hide");
+        timer.setAttribute("class","hide"); // this hides the timer at the top 
         clearTimeout(countdown);
-        document.getElementById("final-score").innerHTML = timeleft;
+        document.getElementById("final-score").innerHTML = timeleft; // this adds the time left to the final score
         return cycleQuestions; 
     }
 
-
     cycleQuestions()
+
+};
+
+
+// BELOW - runs once the save button is clicked and initials are saved 
+
+initials = "WY"
+score = "34"
+// way to save score from game 
+function saveNewScores () {
+    // var initials = document.getElementById('initials'.value);
+    // localStorage.setItem("text", json.stringify({initials, score}));
+
+    // get highscores if they exist
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || []
+    console.log(highscores)
+    // turn our data into an object / creates new obkect
+
+    newScores = {initials: initials, score: score}
+
+
+    // add our object to the scores array / pushes object to array
+
+    highscores.push(newScoures)
+    // add updated array to local storage 
+
+    localStorage.setItem("highscores", JSON.stringify(highScores))
 }
+saveNewScores(); 
+
+// office hours save score
+
+
+
 
 
 //TO DO 
@@ -112,45 +144,28 @@ function checkAnswer () {
 
 
 // if the answer is right it logs ten points to their score that is stored in the console log 
-    // review the 4.4.6 module on how to store things in the console.log 
+//     review the 4.4.6 module on how to store things in the console.log 
 
 // if the answer is wrong it adds zero points to the score but subtracts five seconds off the timer loop?
-    // some kind of for loop that says if var=true then add 10 to score (id=final-score)
-        // this variable will be an empty array function ie var playerScore = []; 
-    // if var = false then -10 from timeleft 
+//     some kind of for loop that says if var=true then add 10 to score (id=final-score)
+//         this variable will be an empty array function ie var playerScore = []; 
+//     if var = false then -10 from timeleft 
 
 // questions will cycle through one big for loop and pull questions from the questions.js file
-    // the end screen will pop up if all the questions are answered or if the timer hits zero
-    // if timeleft=0 it triggers the end screen
-    // if last questions is answered it hits end screen
-    // need to use clearinterval to trigger a function to get to end screen if the user hits zero?     
+//     the end screen will pop up if all the questions are answered or if the timer hits zero
+//     if timeleft=0 it triggers the end screen
+//     if last questions is answered it hits end screen
+//     need to use clearinterval to trigger a function to get to end screen if the user hits zero?     
 
 
 // once the game is over 
-    // text is displayed with the users final score id=final-score
-    // submitting this ties the initials to the highscore and logs it in the highscores.html file 
+//     text is displayed with the users final score id=final-score
+//     submitting this ties the initials to the highscore and logs it in the highscores.html file 
 
 
 // optional but could somehow tie this array of scores to display on the highscores.html page (this is optional)
-    // 
+    
 
 
 
-// startBtn.addEventListener("click", setInterval); 
-
-
-
-// Old code just in case - delete before submission
-// start timer function
-
-// $("#start").click(function(){
-// var timeLeft = 75;
-// var countdown = setInterval(function() {
-//     timeLeft--;
-//     document.getElementById('time').textContent = timeLeft +' seconds';
-//     if (timeLeft <= 0) {
-//         alert("sorry, you're out of time");
-//         clearInterval(countdown);
-//     }
-// }, 1000);
-// }); 
+// startBtn.addEventListener("click", setInterval);
