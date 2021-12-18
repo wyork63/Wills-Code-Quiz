@@ -104,29 +104,35 @@ function checkAnswer () {
 
 // BELOW - runs once the save button is clicked and initials are saved 
 
-initials = "WY"
-score = "34"
+
+submit.addEventListener ("click", saveNewScores)
+    
+
 // way to save score from game 
 function saveNewScores () {
-    // var initials = document.getElementById('initials'.value);
-    // localStorage.setItem("text", json.stringify({initials, score}));
+    var initials = document.getElementById('initials').value;
+    // localStorage.setItem("highscores", JSON.stringify({initials, timeleft}));
 
     // get highscores if they exist
-    var highscores = JSON.parse(localStorage.getItem("highscores")) || []
-    console.log(highscores)
+    var highScores = JSON.parse(localStorage.getItem("highscores")) || []
+    console.log(highScores)
     // turn our data into an object / creates new obkect
 
-    newScores = {initials: initials, score: score}
-
+    newScores = {initials: initials, timeleft: timeleft}
 
     // add our object to the scores array / pushes object to array
 
-    highscores.push(newScoures)
+    highScores.push(newScores)
     // add updated array to local storage 
 
     localStorage.setItem("highscores", JSON.stringify(highScores))
+
+    // kills function to not submit again 
+    submit.removeEventListener("click", saveNewScores) // could add function to hide button once clicked
 }
-saveNewScores(); 
+
+
+// saveNewScores(); 
 
 // office hours save score
 
