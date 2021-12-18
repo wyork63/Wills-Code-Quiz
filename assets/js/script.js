@@ -131,7 +131,9 @@ function saveNewScores () {
 
     // kills function to not submit again 
     submit.removeEventListener("click", saveNewScores)
+
     
+
 }
 
 
