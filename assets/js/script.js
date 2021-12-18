@@ -53,6 +53,7 @@ function cycleQuestions() {
     // sets value of the button to the text in the array so that it can be checked against the answer later
     displayQuestion.answers.forEach(option => {
         var answerButton = document.createElement ("button");
+        answerButton.classList.add("button");
         answerButton.setAttribute ("value", option);
         answerButton.textContent = option;
         // will check to see if the answer is correct
@@ -91,6 +92,7 @@ function checkAnswer () {
     if (questionsIndex > 5) {
         endScreen.removeAttribute("class");
         questions.setAttribute("class","hide");
+        scores2.setAttribute("class","hide")
         timer.setAttribute("class","hide"); // this hides the timer at the top 
         clearTimeout(countdown);
         document.getElementById("final-score").innerHTML = timeleft; // this adds the time left to the final score
@@ -128,7 +130,8 @@ function saveNewScores () {
     localStorage.setItem("highscores", JSON.stringify(highScores))
 
     // kills function to not submit again 
-    submit.removeEventListener("click", saveNewScores) // could add function to hide button once clicked
+    submit.removeEventListener("click", saveNewScores)
+    
 }
 
 

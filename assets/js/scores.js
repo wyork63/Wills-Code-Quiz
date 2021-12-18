@@ -10,16 +10,12 @@ function loadScores () {
     var highScores = JSON.parse(localStorage.getItem("highscores")) || []
     // document.getElementById("highscores").textContent = highScores;
     for (var index = 0; index < highScores.length; index++) {
-        const score = highScores[index];
+        var score = highScores[index];
         var scoreEl = document.createElement ("li");
         list.appendChild(scoreEl); 
-        scoreEl.textContent = score.initials, score.timeleft 
-        
+        scoreEl.innerHTML = score.timeleft
     }
 }
-
 // grab out score
 
 loadScores() 
-
-

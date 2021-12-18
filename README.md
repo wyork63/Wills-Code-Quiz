@@ -2,21 +2,14 @@
 A multiple choice quiz about coding that stores results
 
 
-## Requirements 
-GIVEN I am taking a code quiz
-- [X] WHEN I click the start button
-- [X] THEN a timer starts and I am presented with a question 
-- [X] WHEN I answer a question
-- [X] THEN I am presented with another question
-- [X] WHEN I answer a question incorrectly
-- [X] THEN time is subtracted from the clock
-- [X] WHEN all questions are answered or the timer reaches 0
-- [X] THEN the game is over
-- [] WHEN the game is over
-- [] THEN I can save my initials and score
+##
 
-## Application quality 
-- [] Application user experience is intuitvie and easy to navigate
-- [] application user intergace is clean and polished
-- [] application resembles the mockup functionality provided in the instructions 
+Take the quiz to test out your knowledge in Javascript! Once the quiz is over you can save your score with your initials then view the other highscore! 
+
+## Click here for a live deployment of the site https://wyork63.github.io/Wills-Code-Quiz/
+
+## Click here to access the repo https://github.com/wyork63/Wills-Code-Quiz
+
+## Check out a screenshow below 
+![Screenshot of Code Quiz](/image/code-quiz.png)
 
