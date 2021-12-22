@@ -13,7 +13,7 @@ function loadScores () {
         var score = highScores[index];
         var scoreEl = document.createElement ("li");
         list.appendChild(scoreEl); 
-        scoreEl.innerHTML = score.timeleft
+        scoreEl.innerHTML = score.initials + ": " + score.timeleft
     }
 }
 // grab out score
